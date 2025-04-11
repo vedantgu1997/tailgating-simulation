@@ -1,0 +1,53 @@
+scenario_configs:
+  door_held_open:
+    duration_range:
+    - 15
+    - 60
+    human_feedback: 0
+    human_logic: Door intentionally held open for multiple people.
+    tailgating_detected: 1
+  door_left_open:
+    duration_range:
+    - 180
+    - 200
+    human_feedback: 0
+    human_logic: Door was left open; no door closed event logged.
+    tailgating_detected: 0
+  guest_entry:
+    duration_range:
+    - 15
+    - 20
+    human_feedback: 0
+    human_logic: Guest was invited; system flagged as tailgating.
+    tailgating_detected: 1
+  janitor_cart:
+    duration_range:
+    - 15
+    - 20
+    human_feedback: 0
+    human_logic: Janitor with cart falsely flagged as tailgating.
+    tailgating_detected: 1
+  normal:
+    duration_range:
+    - 3
+    - 10
+    human_feedback: 0
+    human_logic: Single authorized entry, door closed properly.
+    tailgating_detected: 0
+  tailgating:
+    duration_range:
+    - 5
+    - 30
+    human_feedback: 1
+    human_logic: Multiple unauthorized entries after a single swipe.
+    tailgating_detected: 1
+scenario_weights:
+  door_held_open: 0.125
+  door_left_open: 0.04
+  guest_entry: 0.175
+  janitor_cart: 0.1
+  normal: 0.5
+  tailgating: 0.06
+simulation:
+  num_episodes: 1000
+  start_date: '2025-04-14 09:00:00'
